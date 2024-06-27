@@ -83,7 +83,7 @@ public class Controlador : MonoBehaviour
     {
         for (int i = 0; i < Productos.Length; i++)
         {
-            precio.Add(Productos[i], Random.Range(1, 20));
+            precio.Add(Productos[i], Random.Range(1, 19));
         }
     }
 }

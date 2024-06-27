@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Controlador : MonoBehaviour
 {
-    public GameObject[] Objetos;
+    public GameObject[] Productos;
     Dictionary<GameObject, int> precio = new Dictionary<GameObject, int>();
     GameObject ProductoRandom;
     public Text txt_preciosSuma;
@@ -18,7 +18,7 @@ public class Controlador : MonoBehaviour
     public GameObject panelSeleccion;
     int rprecioRandom;
     int SumaDePrecio;
-    int Productos;
+    int ProductosSeleccionados;
     int precioSuma;
     int precio1;
     int precio2;
@@ -33,5 +33,13 @@ public class Controlador : MonoBehaviour
     void Update()
     {
         
+    }
+    public void DeactivateAll()
+    {
+        for (int i = 0; i < Productos.Length; i++)
+        {
+            Productos[i].SetActive(false);
+        }
+
     }
 }

@@ -119,56 +119,54 @@ public class Controlador : MonoBehaviour
     }
 
     public void RespuestaDeBotonoes()
+{
+    botonPresionado = true; 
+
+    if (ProductosSeleccionados == 1)
     {
-
-
-        botonPresionado = true; 
-
-        if (ProductosSeleccionados == 1)
+        if (precioSuma + precio1 == SumaDePrecio)
         {
-            if (precio1 + precioSuma == SumaDePrecio)
-            {
-                panelMal_Bien.SetActive(true);
-                txt_notificacion.text = "Ganaste!!!";
-                txt_btnVolverAJugar.text = "Volver A Jugar";
-            }
-            else
-            {
-                panelMal_Bien.SetActive(true);
-                txt_notificacion.text = "Perdiste";
-                txt_btnVolverAJugar.text = "Volver a intentar";
-            }
+            panelMal_Bien.SetActive(true);
+            txt_notificacion.text = "Ganaste!!!";
+            txt_btnVolverAJugar.text = "Volver A Jugar";
         }
-        else if (ProductosSeleccionados == 2)
+        else
         {
-            if (precio2 + precioSuma == SumaDePrecio)
-            {
-                panelMal_Bien.SetActive(true);
-                txt_notificacion.text = "Ganaste!!!";
-                txt_btnVolverAJugar.text = "Reiniciar Desafío";
-            }
-            else
-            {
-                panelMal_Bien.SetActive(true);
-                txt_notificacion.text = "Perdiste";
-                txt_btnVolverAJugar.text = "Volver a intentar";
-            }
+            panelMal_Bien.SetActive(true);
+            txt_notificacion.text = "Perdiste";
+            txt_btnVolverAJugar.text = "Volver a intentar";
         }
-        else if (ProductosSeleccionados == 3)
+    }
+    else if (ProductosSeleccionados == 2)
+    {
+        if (precioSuma + precio2 == SumaDePrecio)
         {
-            if (precio3 + precioSuma == SumaDePrecio)
-            {
-                panelMal_Bien.SetActive(true);
-                txt_notificacion.text = "Ganaste!!!";
-                txt_btnVolverAJugar.text = "Reiniciar Desafío";
-            }
-            else
-            {
-                panelMal_Bien.SetActive(true);
-                txt_notificacion.text = "Perdiste";
-                txt_btnVolverAJugar.text = "Volver a intentar";
-            }
+            panelMal_Bien.SetActive(true);
+            txt_notificacion.text = "Ganaste!!!";
+            txt_btnVolverAJugar.text = "Reiniciar Desafío";
         }
+        else
+        {
+            panelMal_Bien.SetActive(true);
+            txt_notificacion.text = "Perdiste";
+            txt_btnVolverAJugar.text = "Volver a intentar";
+        }
+    }
+    else if (ProductosSeleccionados == 3)
+    {
+        if (precioSuma + precio3 == SumaDePrecio)
+        {
+            panelMal_Bien.SetActive(true);
+            txt_notificacion.text = "Ganaste!!!";
+            txt_btnVolverAJugar.text = "Reiniciar Desafío";
+        }
+        else
+        {
+            panelMal_Bien.SetActive(true);
+            txt_notificacion.text = "Perdiste";
+            txt_btnVolverAJugar.text = "Volver a intentar";
+        }
+    }
         else
         {
             StartCoroutine(MostrarPanelTemporalmente());

@@ -24,6 +24,8 @@ public class Controlador : MonoBehaviour
     int precio1;
     int precio2;
     int precio3;
+    bool botonPresionado = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,30 +33,34 @@ public class Controlador : MonoBehaviour
         panelSeleccion.SetActive(false);
         DeactivarProductos();
         CreacionDePrecios();
-        ActivarProductos(387f, -224f, 0);
+       
+        
+        ActivarProductos(19f, 42f, 0);
         precioSuma = precio[ProductoRandom];
         txt_preciosSuma.text = "$" + precioSuma.ToString();
-        ActivarProductos(555f, -224f, 0);
+        ActivarProductos(12f, 42f, 0);
         precio1 = precio[ProductoRandom];
         txt1.text = "$" + precio1.ToString();
-        ActivarProductos(710f, -224f, 0);
+        ActivarProductos(22f, 42f, 0);
         precio2 = precio[ProductoRandom];
         txt2.text = "$" + precio2.ToString();
-        ActivarProductos(466f, -86f, 0);
+        ActivarProductos(61f, 34f, 0);
         precio3 = precio[ProductoRandom];
         txt3.text = "$" + precio3.ToString();
         precioRandom = Random.Range(1, 4);
+        
+        
         if (precioRandom == 1)
         {
             SumaDePrecio = precioSuma + precio1;
         }
         else if (precioRandom == 2)
         {
-            SumaDePrecio = SumaDePrecio = precioSuma + precio2;
+            SumaDePrecio = precioSuma + precio2;
         }
         else if (precioRandom == 3)
         {
-            SumaDePrecio = SumaDePrecio = precioSuma + precio3;
+            SumaDePrecio = precioSuma + precio3;
         }
         txt_Suma.text = "$" + SumaDePrecio.ToString();
     }
@@ -62,23 +68,27 @@ public class Controlador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+
     public void DeactivarProductos()
     {
         for (int i = 0; i < Productos.Length; i++)
         {
             Productos[i].SetActive(false);
         }
-
     }
+
     void ActivarProductos(float x, float y, float z)
     {
         int randomIndex = Random.Range(0, Productos.Length);
         ProductoRandom = Productos[randomIndex];
+        x = Mathf.Clamp(x, 0f, Screen.width - 100f);
+        y = Mathf.Clamp(y, 0f, Screen.height - 100f);
         ProductoRandom.transform.position = new Vector3(x, y, z);
         ProductoRandom.SetActive(true);
     }
+
     void CreacionDePrecios()
     {
         for (int i = 0; i < Productos.Length; i++)
@@ -110,6 +120,10 @@ public class Controlador : MonoBehaviour
 
     public void RespuestaDeBotonoes()
     {
+
+
+        botonPresionado = true; 
+
         if (ProductosSeleccionados == 1)
         {
             if (precio1 + precioSuma == SumaDePrecio)
@@ -117,7 +131,6 @@ public class Controlador : MonoBehaviour
                 panelMal_Bien.SetActive(true);
                 txt_notificacion.text = "Ganaste!!!";
                 txt_btnVolverAJugar.text = "Volver A Jugar";
-
             }
             else
             {
@@ -154,19 +167,18 @@ public class Controlador : MonoBehaviour
                 panelMal_Bien.SetActive(true);
                 txt_notificacion.text = "Perdiste";
                 txt_btnVolverAJugar.text = "Volver a intentar";
-
             }
         }
         else
         {
             StartCoroutine(MostrarPanelTemporalmente());
-
-            IEnumerator MostrarPanelTemporalmente()
-            {
-                panelSeleccion.SetActive(true); 
-                yield return new WaitForSeconds(3f); 
-                panelSeleccion.SetActive(false); 
-            }
         }
+    }
+
+    IEnumerator MostrarPanelTemporalmente()
+    {
+        panelSeleccion.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        panelSeleccion.SetActive(false);
     }
 }

@@ -35,16 +35,16 @@ public class Controlador : MonoBehaviour
         CreacionDePrecios();
        
         
-        ActivarProductos(19f, 42f, 0);
+        ActivarProductos(580f, 65f, 0);
         precioSuma = precio[ProductoRandom];
         txt_preciosSuma.text = "$" + precioSuma.ToString();
-        ActivarProductos(12f, 42f, 0);
+        ActivarProductos(380f, 65f, 0);
         precio1 = precio[ProductoRandom];
         txt1.text = "$" + precio1.ToString();
-        ActivarProductos(22f, 42f, 0);
+        ActivarProductos(180f, 65f, 0);
         precio2 = precio[ProductoRandom];
         txt2.text = "$" + precio2.ToString();
-        ActivarProductos(61f, 34f, 0);
+        ActivarProductos(260f, 230f, 0);
         precio3 = precio[ProductoRandom];
         txt3.text = "$" + precio3.ToString();
         precioRandom = Random.Range(1, 4);
@@ -79,9 +79,14 @@ public class Controlador : MonoBehaviour
         }
     }
 
+
     void ActivarProductos(float x, float y, float z)
     {
-        int randomIndex = Random.Range(0, Productos.Length);
+        // 
+        int randomIndex;
+        do{
+            randomIndex = Random.Range(0, Productos.Length -1);
+        } while (Productos[randomIndex].active);
         ProductoRandom = Productos[randomIndex];
         x = Mathf.Clamp(x, 0f, Screen.width - 100f);
         y = Mathf.Clamp(y, 0f, Screen.height - 100f);

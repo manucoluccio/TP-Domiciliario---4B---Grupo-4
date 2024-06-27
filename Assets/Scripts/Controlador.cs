@@ -86,4 +86,87 @@ public class Controlador : MonoBehaviour
             precio.Add(Productos[i], Random.Range(1, 19));
         }
     }
+    public void Producto1()
+    {
+        ProductosSeleccionados = 1;
+        txt1.fontStyle = FontStyle.Bold;
+        txt2.fontStyle = FontStyle.Normal;
+        txt3.fontStyle = FontStyle.Normal;
+    }
+    public void Producto2()
+    {
+        ProductosSeleccionados = 2;
+        txt2.fontStyle = FontStyle.Bold;
+        txt1.fontStyle = FontStyle.Normal;
+        txt3.fontStyle = FontStyle.Normal;
+    }
+    public void Producto3()
+    {
+        ProductosSeleccionados = 3;
+        txt3.fontStyle = FontStyle.Bold;
+        txt2.fontStyle = FontStyle.Normal;
+        txt1.fontStyle = FontStyle.Normal;
+    }
+
+    public void RespuestaDeBotonoes()
+    {
+        if (ProductosSeleccionados == 1)
+        {
+            if (precio1 + precioSuma == SumaDePrecio)
+            {
+                panelMal_Bien.SetActive(true);
+                txt_notificacion.text = "Ganaste!!!";
+                txt_btnVolverAJugar.text = "Volver A Jugar";
+
+            }
+            else
+            {
+                panelMal_Bien.SetActive(true);
+                txt_notificacion.text = "Perdiste";
+                txt_btnVolverAJugar.text = "Volver a intentar";
+            }
+        }
+        else if (ProductosSeleccionados == 2)
+        {
+            if (precio2 + precioSuma == SumaDePrecio)
+            {
+                panelMal_Bien.SetActive(true);
+                txt_notificacion.text = "Ganaste!!!";
+                txt_btnVolverAJugar.text = "Reiniciar Desafío";
+            }
+            else
+            {
+                panelMal_Bien.SetActive(true);
+                txt_notificacion.text = "Perdiste";
+                txt_btnVolverAJugar.text = "Volver a intentar";
+            }
+        }
+        else if (ProductosSeleccionados == 3)
+        {
+            if (precio3 + precioSuma == SumaDePrecio)
+            {
+                panelMal_Bien.SetActive(true);
+                txt_notificacion.text = "Ganaste!!!";
+                txt_btnVolverAJugar.text = "Reiniciar Desafío";
+            }
+            else
+            {
+                panelMal_Bien.SetActive(true);
+                txt_notificacion.text = "Perdiste";
+                txt_btnVolverAJugar.text = "Volver a intentar";
+
+            }
+        }
+        else
+        {
+            StartCoroutine(MostrarPanelTemporalmente());
+
+            IEnumerator MostrarPanelTemporalmente()
+            {
+                panelSeleccion.SetActive(true); 
+                yield return new WaitForSeconds(3f); 
+                panelSeleccion.SetActive(false); 
+            }
+        }
+    }
 }

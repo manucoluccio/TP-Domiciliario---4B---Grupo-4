@@ -34,12 +34,19 @@ public class Controlador : MonoBehaviour
     {
         
     }
-    public void DeactivateAll()
+    public void DeactivarProductos()
     {
         for (int i = 0; i < Productos.Length; i++)
         {
             Productos[i].SetActive(false);
         }
 
+    }
+    void ActivarProductos(float x, float y, float z)
+    {
+        int randomIndex = Random.Range(0, Productos.Length);
+        ProductoRandom = Productos[randomIndex];
+        ProductoRandom.transform.position = new Vector3(x, y, z);
+        ProductoRandom.SetActive(true);
     }
 }

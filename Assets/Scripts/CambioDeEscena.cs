@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class CambioDeEscena : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -14,5 +14,9 @@ public class CambioDeEscena : MonoBehaviour
     void Update()
     {
         
+    }
+    public void cambiarEscena()
+    {
+        SceneManager.LoadScene("Escena Principal");
     }
 }

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class CambioDeEscena : MonoBehaviour
+
+public class BackToFirstPantalla : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -15,8 +16,13 @@ public class CambioDeEscena : MonoBehaviour
     {
         
     }
+
     public void CambiarEscena()
     {
-        SceneManager.LoadScene("Escena Principal");
+        SceneManager.LoadScene("sceneinicio");
+    }
+    public void RegresarEscena()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

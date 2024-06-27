@@ -27,26 +27,20 @@ public class Controlador : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        panelSeleccion.SetActive(false);
         panelMal_Bien.SetActive(false);
+        panelSeleccion.SetActive(false);
         DeactivarProductos();
         CreacionDePrecios();
-        ActivarProductos(-185f, -189f, 0);
+        ActivarProductos(387f, -224f, 0);
         precioSuma = precio[ProductoRandom];
         txt_preciosSuma.text = "$" + precioSuma.ToString();
-        ActivarProductos(-28f, -189f, 0);
+        ActivarProductos(555f, -224f, 0);
         precio1 = precio[ProductoRandom];
         txt1.text = "$" + precio1.ToString();
-        ActivarProductos(167f, -189f, 0);
+        ActivarProductos(710f, -224f, 0);
         precio2 = precio[ProductoRandom];
         txt2.text = "$" + precio2.ToString();
-        ActivarProductos(-110f, -75f, 0);
+        ActivarProductos(466f, -86f, 0);
         precio3 = precio[ProductoRandom];
         txt3.text = "$" + precio3.ToString();
         precioRandom = Random.Range(1, 4);
@@ -63,6 +57,12 @@ public class Controlador : MonoBehaviour
             SumaDePrecio = SumaDePrecio = precioSuma + precio3;
         }
         txt_Suma.text = "$" + SumaDePrecio.ToString();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
     public void DeactivarProductos()
     {
